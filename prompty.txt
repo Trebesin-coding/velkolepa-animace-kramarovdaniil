@@ -1,1 +1,2 @@
 Sem patří použité prompty
+Ptal jsem se AI jen na transform-origin
