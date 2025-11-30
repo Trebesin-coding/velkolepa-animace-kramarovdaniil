@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velkolepá animace</title>
+    <style>
+
+body {
+    background: #eef3f8;
+    font-family: Arial;
+    padding: 20px;
+}
+
+.kunteynir {
+    width: 650px;
+    margin: 0 auto; 
+    text-align: center;
+}
+
+.map {
+    width: 600px;
+    height: 350px;
+    background: fuchsia;
+    border: 5px solid black;
+    position: relative;
+}
+
+.route {
+    position: absolute;
+    background: #333;
+}
+
+#route1 {
+    top:175px; 
+    left:60px; 
+    width:304px; 
+    height:4px;
+}
+
+#route2 {
+    top:55px; 
+    left:360px; 
+    width:4px; 
+    height:120px;
+}
+
+#route3 {
+    top:55px; 
+    left:360px; 
+    width:160px; 
+    height:4px;
+}
+
+#arrow {
+    width: 50px;
+    position: absolute;
+    top: 153px;
+    left: 50px;
+    transform-origin: center center;
+    transition: transform 0.25s ease;
+}
+
+.target {
+    width: 22px;
+    height: 22px;
+    background: gold;
+    border-radius: 50%;
+    position: absolute;
+    top: 50px;
+    left: 520px;
+    animation: pulse 1.2s infinite;
+}
+
+.button {
+    width: 100px;
+    height: 60px;
+}
+
+#buttonStart {
+    background: #4CAF50;
+    color: white;
+}
+
+#buttonStart:hover {
+    background: #43a047;
+    transform: scale(1.05);
+}
+
+#buttonReset {
+    background: #e53935;
+    color: white;
+}
+
+#buttonReset:hover {
+    background: #d32f2f;
+    transform: scale(1.05);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+@keyframes move {
+    0%   { transform: translate(0px, 0px) rotate(0deg); }
+    40%  { transform: translate(288px, 0px) rotate(0deg); }      
+    41%  { transform: translate(288px, 0px) rotate(-90deg); }   
+    70%  { transform: translate(288px, -120px) rotate(-90deg); } 
+    71%  { transform: translate(288px, -120px) rotate(0deg); }   
+    100% { transform: translate(440px, -120px) rotate(0deg); } 
+}
+
+.go {
+    animation: move 4s linear forwards;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="kunteynir">
+
+<h2>Jednoduchá navigace se šipkou</h2>
+
+<div class="map">
+
+<div class="route" id="route1"></div>
+<div class="route" id="route2"></div>
+<div class="route" id="route3"></div>
+
+<img src="https://iconsvg.co/icon/08dbb3ce-1bbc-458e-8c9b-a0447a05f00c.svg" alt="" id="arrow">
+
+<div class="target"></div>
+
+</div>
+
+<br>
+
+<button onclick="startDrive()" class="button" id="buttonStart">Start</button>
+<button onclick="resetDrive()" class="button" id="buttonReset">Reset</button>
+
+</div>
+
+<script>
+
+function startDrive() {
+    const arrow = document.getElementById("arrow");
+    arrow.classList.remove("go");
+    arrow.classList.add("go");
+}
+
+function resetDrive() {
+    const arrow = document.getElementById("arrow");
+    arrow.classList.remove("go");
+    arrow.style.transform = "none";
+}
+
+</script>
+
+</body>
+</html>
